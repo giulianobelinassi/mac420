@@ -2,7 +2,7 @@ import numpy as np
 from PyQt5.QtGui import QVector3D
 
 from OpenGL import GL
-from .Graphics.Actor import Actor
+from Source.Graphics.Actor import Actor
 
 class Cube(Actor):
 
@@ -123,6 +123,6 @@ class Cube(Actor):
 
     def render(self):
         """Render cube"""
-        GL.glDrawArrays(self._render_mode, 0, 36)
+        GL.glDrawArrays(self._render_mode, 0, len(self._vertices))
 
     
