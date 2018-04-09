@@ -46,16 +46,19 @@ class Cone(Actor):
         angle = np.linspace(0.0, 2.0*math.pi, self._resolution, endpoint=False)
         angle = np.append(angle, [0.0])
 
-        x = -np.sin(angle) * self._radius
+        ## scaling factors for vertex normals
+        cosn = (self._height / np.sqrt( self._height * self._height + self._radius * self._radius ))
+        sinn = (self._radius / np.sqrt( self._height * self._height + self._radius * self._radius ))
+
+        x = np.cos(angle) * self._radius
         y = np.zeros(self._resolution+1)
-        z = -np.cos(angle) * self._radius
+        z = np.sin(angle) * self._radius
 
-        ## normals for top
-        a = math.tan(self._height/self._radius)
-        nx = np.sin(angle) * math.sin(a)
-        ny = -math.cos(a) * np.ones(self._resolution+1)
-        nz = np.cos(angle) * math.sin(a)
-
+        ## normals
+        nx = np.cos(angle) * cosn
+        ny = sinn * np.ones(self._resolution+1)
+        nz = np.sin(angle) * cosn
+        
         #t = 1.0
         #delta = 1.0 / self._resolution
         vertices, normals = [], []
