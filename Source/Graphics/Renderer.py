@@ -16,8 +16,11 @@ from Source.Graphics.Group import Group
 from Source.Graphics.Gnomon import Gnomon
 from Source.Graphics.World import World
 
-from Source.Graphics.Cone import Cone
-from Source.Graphics.Icosahedron import Icosahedron
+#from Source.Graphics.Cone import Cone
+#from Source.Graphics.Icosahedron import Icosahedron
+
+from Source.Graphics.Teapot import Teapot
+
 
 class Renderer(QOpenGLWidget):
 
@@ -133,7 +136,7 @@ class Renderer(QOpenGLWidget):
             #self._world.addActor(Icosahedron(self._world, level=2))
             xform = QMatrix4x4()
             xform.rotate(-90.0, 0.0, 0.0, 1.0)
-            self._world.addActor(Cone(self._world, resolution=24, height=1.0, radius=0.5, transform=xform))
+            self._world.addActor(Teapot(self._world, resolution=24, height=1.0, radius=0.5, transform=xform))
             ###
 
 
